@@ -1,7 +1,6 @@
                                 
 
-  <h1>Home</h1>
-![Image](https://github.com/user-attachments/assets/082062eb-19ca-4432-9171-4d668333710f)
+  <h1>Home</h1>![Image](https://github.com/user-attachments/assets/082062eb-19ca-4432-9171-4d668333710f)
 <h1>Inscription</h1>
 ![Image](https://github.com/user-attachments/assets/816ac2c3-6fa3-4b5a-b2d0-eb3f1ebb1cd7)
 <h1>Connexion</h1>
