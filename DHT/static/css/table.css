@@ -1,0 +1,125 @@
+
+
+.show-row{
+   text-align: center;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    top: 80px;
+    left: 87px;
+    width: 85%;
+    height: 60px;
+    background-color:#22a4da;
+    border-radius: 10px;
+
+}
+
+.show-row h3{
+
+
+    text-align: center;
+    line-height: 500 px;
+    margin: 0 auto;
+}
+#mon_select{
+    position: absolute;
+    content: none;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    left: 300px;
+    top: 30px;
+}
+label[for="mon_select"] {
+    position: absolute;
+     left: 250px;
+     top: 30px;
+     width: 130px;
+     font-size: 20px;
+
+  }
+
+label[for='search_time']
+{
+    position: absolute;
+    left: 830px;
+    top: 30px;
+    font-size: 20px;
+}
+#search_time::placeholder{
+text-align: center;
+}
+#search_time{
+    position: absolute;
+    left: 900px;
+    top: 33px;
+}
+.projects{
+    width: 95%;
+    height: 90%;
+    position: relative;
+    top: 110px;
+}
+.tables {
+    position: absolute;
+    left: 80px;
+    top: 0;
+    right: 300px;
+    width: 90%;
+    height: 890px;
+    border-spacing: 0;
+    min-width: 1000px;
+}
+.tables p {
+font-weight: bold;
+
+}
+#Temperature-logo {
+    width: 21px;
+    height: 20px;
+    margin-left: 30px;
+}
+#Humidity-logo{
+    width: 29px;
+    height: 20px;
+    margin-left: 30px;
+}
+#Capteur-logo{
+    width: 30px;
+    height: 37px;
+    margin-left: 50px;
+}
+.projects .tables thead th {
+    background-color: white;
+    width: 200px;
+    font-weight: bold;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    border-left: solid black 1px;
+    text-align: center;
+}
+
+.projects table td {
+    width: 500px;
+    height: 25px;
+    padding: 15px;
+    border-bottom: solid #eee 1px;
+    border-left: solid #eee 1px;
+}
+.projects table tr th:last-child {
+    border-right: solid black 1px;
+}
+.projects .tables tr:hover td{
+    background-color: rgb(180, 254, 255);
+}
+#csv{
+    position: absolute;
+    top: 200px;
+    right: 60px;
+    background-color: #ccc;
+    color: red;
+}
+#csv:hover{
+    background-color: #999;
+    color: #fff;
+}

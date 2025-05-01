@@ -1,0 +1,19 @@
+
+ <!-- Barre de navigation -->
+ <div>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <h1>SURVEILLANCE TEMP REELE:CAPTEUR DHT11</h1>
+        </div>
+        <ul class="navbar-links">
+                    <li>  <a href="{% url 'table' %}" >Tableau</a></li>
+                    <li>  <a href="{% url 'graphiqueTemp' %}" >graph de temperature</a></li>
+                    <li>  <a href="{% url 'graphiqueHum' %}" >graph  d'humidité</a></li>
+                    <li>  <a href="{% url 'json' %}" >Json</a></li>
+                    <li>  <a href="{% url 'logout_view' %}" class="logout-button">Se déconnecter</a></li>
+
+
+        </ul>
+    </nav>
+ </div>
+

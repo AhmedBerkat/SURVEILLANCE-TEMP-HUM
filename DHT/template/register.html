@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="type_user">type_user:</label>
+        <select name="type_user" id="type_user" required>
+            <option value="visiteur">Visiteur</option>
+            <option value="admin">Administrateur</option>
+        </select><br>
+
+        <label for="password">Mot de passe:</label>
+        <input type="password" name="password" id="password" required><br>
+
+        <button type="submit">S'inscrire</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div  class="show-row">
+
+</div>
+<div class="projects">
+
+  <div class ="tables" >
+     <table>
+
+    <thead class="DIV">
+        <tr>
+            <th>Nom <img  id="Capteur-logo" src="{% static 'images/dht11.jpg' %}" alt="Capteur Image"></th>
+            <th>Temperature <img  id="Temperature-logo" src="{% static 'images/temp.jpg' %}" alt="Temperature Image"></th>
+            <th>Humidity  <img id="Humidity-logo" src="{% static 'images/humidity.jpg' %}" alt="Humidity Image"></th>
+            <th>Date <img id="Humidity-logo" src="{% static 'images/time.jpg' %}" alt="Humidity Image"> </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td><a href="{% url 'graphiqueTemp' %}" >DHT 11</a></td>
+            <td>{{ valeurs.temp }} </td>
+            <td>{{ valeurs.hum }}</td>
+            <td>{{ valeurs.date }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<p> ce tableau présente les mesures actuelles de température et d'humidité enregistrées par le capteur DHT11. Ces données sont essentielles pour surveiller et ajuster les conditions environnementales en temps réel.</p>
+</div >
+<button id='csv' >Télecharger csv</button>
+
+     </div>
+  <script>
+       
+    var selectEl = $('#mon_select');
+
+    selectEl.change(function() {
+        $('#my-form').submit();
+    });
+
+    var downloadButton = document.getElementById('csv');
+downloadButton.addEventListener('click', function() {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/download_csv/', true);
+xhr.responseType = 'blob';
+xhr.onload = function() {
+if (xhr.status === 200) {
+  var url = window.URL.createObjectURL(xhr.response);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'model_values.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+};
+xhr.send();
+});
+// Fonction pour recharger la page toutes les minutes
+    setInterval(function() {
+        location.reload();
+    }, 30000); // 60000 millisecondes = 1 minute
+
+</script>
+{% endblock  %}

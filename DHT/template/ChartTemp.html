@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/chart.css' %}">
+<div class="graphique">
+    <div class="navb">
+        <button id="aujourdhui-link">Historique d'Aujourd'hui</button>
+        <button id="semaine-link">Historique de cette semaine</button>
+        <button id="mois-link">Historique de ce mois</button>
+    </div>
+    <div class="graphique-temp">
+        <canvas id="graphique-temp" height="400"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
+
+<script>
+    // Configuration commune pour les graphiques
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: false,
+                min: 0,
+                max: 100,
+                ticks: {
+                    callback: function(value) {
+                        return value + '°C';
+                    }
+                }
+            },
+            x: {
+                type: 'time',
+                time: {
+                    tooltipFormat: 'YYYY-MM-DD HH:mm',
+                    displayFormats: {
+                        hour: 'HH:mm',
+                        day: 'DD MMM'
+                    }
+                },
+                ticks: {
+                    autoSkip: true,
+                    maxRotation: 45,
+                    minRotation: 0
+                }
+            }
+        },
+        plugins: {
+            zoom: {
+                pan: {
+                    enabled: true,
+                    mode: 'xy'
+                },
+                zoom: {
+                    wheel: {
+                        enabled: true
+                    },
+                    pinch: {
+                        enabled: true
+                    },
+                    mode: 'xy'
+                }
+            }
+        }
+    };
+
+    let tempChart;
+
+    function createTempChart(labels, dataValues) {
+        const ctx = document.getElementById('graphique-temp').getContext('2d');
+
+        if (tempChart) {
+            tempChart.destroy();
+        }
+
+        tempChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Température (°C)',
+                    data: dataValues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                    tension: 0.1
+                }]
+            },
+            options: chartOptions
+        });
+    }
+
+    // Fonction pour charger les données
+    function loadData(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.temps.map(time => new Date(time));
+                const dataValues = data.temperature;
+                createTempChart(labels, dataValues);
+            });
+    }
+
+    // Événements des boutons
+    document.getElementById('aujourdhui-link').addEventListener('click', () => {
+        loadData('/chart-data-jour/');
+    });
+
+    document.getElementById('semaine-link').addEventListener('click', () => {
+        loadData('/chart-data-semaine/');
+    });
+
+    document.getElementById('mois-link').addEventListener('click', () => {
+        loadData('/chart-data-mois/');
+    });
+
+    // Chargement initial
+    loadData('/chart-data-jour/');
+</script>
+
+{% endblock %}

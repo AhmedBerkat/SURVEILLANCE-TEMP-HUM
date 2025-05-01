@@ -1,0 +1,20 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/admin_redirect.css' %}">
+<div class="admin-redirect-container">
+    <h2>Bienvenue dans l'interface d'administration</h2>
+    <p>Bonjour , vous êtes connecté en tant qu'administrateur.</p>
+    <p>Dernière connexion : {{ last_login|date:"d/m/Y H:i" }}</p>
+    
+    <div class="redirect-message">
+        <p>Vous serez redirigé vers l'interface d'administration dans 5 secondes...</p>
+        <a href="http://127.0.0.1:8000/admin/" class="btn btn-primary">Accéder immédiatement</a>
+    </div>
+</div>
+
+<script>
+    // Redirection automatique après 5 secondes
+    setTimeout(function() {
+        window.location.href = "/admin/";
+    }, 10000);
+</script>
