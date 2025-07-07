@@ -113,8 +113,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOGIN_URL = '/login_view/'
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
 
 import os
 STATIC_URL = 'static/'
@@ -122,8 +121,6 @@ STATICFILES_DIRS = [
 os.path.join(BASE_DIR,'DHT','static')
 ]
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -132,7 +129,7 @@ EMAIL_HOST = 'smtp.gmail.com' # remplacer avec l'adresse SMTP de votrefournisseu
 EMAIL_PORT = 587 # remplacer avec le port SMTP de votre fournisseur demessagerie
 EMAIL_USE_TLS = True # ou False, selon la configuration de votrefournisseur de messagerie
 EMAIL_HOST_USER = '@gmail.com' # remplacer avec votre adresse email
-EMAIL_HOST_PASSWORD = 'xzkg lyqu srjc qfbk' Clé gmail
+EMAIL_HOST_PASSWORD = 'xzkg lyqu srjc qfbk'# Clé gmail
 
 
 # Telegram settings
